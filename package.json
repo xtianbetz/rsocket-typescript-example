@@ -1,0 +1,41 @@
+{
+  "name": "typescript-pizza-cli",
+  "version": "1.0.0",
+  "description": "typescript demo app",
+  "main": "./lib/index.js",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "tsc -p .",
+    "test": "./bin/pizza",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtianbetz/typescript-pizza-cli.git"
+  },
+  "author": "Christian Betz <christian.betz@gmail.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/xtianbetz/typescript-pizza-cli/issues"
+  },
+  "homepage": "https://github.com/xtianbetz/typescript-pizza-cli#readme",
+  "dependencies": {
+    "@types/clear": "^0.1.0",
+    "@types/figlet": "^1.2.0",
+    "chalk": "^3.0.0",
+    "clear": "^0.1.0",
+    "commander": "^4.1.1",
+    "figlet": "^1.2.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "bin": {
+    "pizza": "./lib/index.js"
+  }
+}
