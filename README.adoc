@@ -2,4 +2,63 @@
 
 Adapted from: https://github.com/rsocket/rsocket-js/blob/master/packages/rsocket-examples/src/SimpleCli.js
 
+= Usage
+
+First run the ExampleCli compiled from rsocket-js examples with babel:
+
+....
+node build/SimpleCli.js --mode server --protocol ws
+....
+
+Then start the client:
+
+....
+npm run start
+....
+
+or
+
+....
+npm run build
+node lib/index.js
+....
+
+Expected result on client side:
+
+....
+x@clr-ac6c3d18a1e44dd9af337de503fff7df~/Code/rsocket-typescript-example $ node lib/index.js
+                              _             _             _                                                _           _
+  _ __   ___    ___     ___  | | __   ___  | |_          | |_   _   _   _ __     ___   ___    ___   _ __  (_)  _ __   | |_
+ | '__| / __|  / _ \   / __| | |/ /  / _ \ | __|  _____  | __| | | | | | '_ \   / _ \ / __|  / __| | '__| | | | '_ \  | __|
+ | |    \__ \ | (_) | | (__  |   <  |  __/ | |_  |_____| | |_  | |_| | | |_) | |  __/ \__ \ | (__  | |    | | | |_) | | |_
+ |_|    |___/  \___/   \___| |_|\_\  \___|  \__|          \__|  \__, | | .__/   \___| |___/  \___| |_|    |_| | .__/   \__|
+                                                                |___/  |_|                                    |_|
+Client connecting to localhost:8181
+Connection status: { kind: 'CONNECTED' }
+Requesting stream with payload: undefined
+requestStream { data: 'Hi!', metadata: null }
+onNext(Hello )
+onNext(world!)
+onComplete()
+exit
+....
+
+Expected result on server side:
+
+....
+node SimpleCli.js --mode server --protocol ws
+Server started on 0.0.0.0:8181
+Requesting stream with payload: Hi!
+Server got requestStream with payload: data: Hi!,
+      metadata: null
+onNext(Hello )
+onNext(world!)
+onComplete()
+....
+
+= Todo
+
+- Make work as websocket server is implemented
+- A hack is required to the rsocket typings to work with the 'ws' module in node.
+
 
