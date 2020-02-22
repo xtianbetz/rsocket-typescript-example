@@ -10,7 +10,8 @@ import {RSocketClient, MAX_STREAM_ID} from 'rsocket-core';
 import {Responder, Payload, ReactiveSocket, ISubscription}  from 'rsocket-types';
 import {Flowable, Single}  from 'rsocket-flowable';
 import Deferred from 'fbjs/lib/Deferred'; // TODO: needs typings (we cannot use strict because of this)
-import WsWebSocket = require('ws');
+import ws from "websocket";
+
 // Required the hack to RsocketJS typing...
 // * A (node ws) WebSocket is not the same as standard browser/WebSocket
 // * Modify this file: node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
@@ -61,7 +62,7 @@ class SymmetricResponder implements Partial<Responder<string, string>> {
 
     metadataPush(payload: Payload<string, string>): Single<void> {
         logRequest('metadataPush', payload);
-        return Single.error(new Error()); // TODO: is the typing for Single.error() wrong?
+        throw new Error(); // TODO: figure out how this *should* work
     }
 }
 
@@ -123,7 +124,8 @@ function connect() {
         transport: new RSocketWebSocketClient({
             url: "ws://localhost:8080",
             wsCreator: url => {
-                return new WsWebSocket(url);
+                const wsc = new ws.w3cwebsocket(url);
+                return wsc;
             }
         })
     });

@@ -34,7 +34,8 @@
     "path": "^0.12.7",
     "rsocket-core": "0.0.19",
     "rsocket-websocket-client": "0.0.19",
-    "rsocket-websocket-server": "0.0.19"
+    "rsocket-websocket-server": "0.0.19",
+    "websocket": "^1.0.31"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
