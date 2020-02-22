@@ -23,7 +23,7 @@ IMPORTANT: After installing NPM modules you will need to edit
 node_modules/@types/node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
 (see
 https://github.com/xtianbetz/rsocket-typescript-example/blob/master/src/index.ts#L14
-for more details). This should/will be fixed on day.
+for more details). This should/will be fixed when we figure out the correct approach.
 
 Then build the typescript-based client:
 ....
