@@ -87,7 +87,10 @@ node build/SimpleCli.js --mode server --protocol ws
 
 = Todo
 
-- Make work as websocket server is implemented
-- A hack is required to the rsocket typings to work with the 'ws' module in node (see notes at the top of src/index.ts)
+- Make work as websocket server like the upstream (non-typescript) SimpleCli.js
+  does.
+- A hack is required to the rsocket typings to work with the 'ws' module in
+  node (see notes at the top of src/index.ts). Figure out the proper long-term
+  solution for this problem.
 
 
