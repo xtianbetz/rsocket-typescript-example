@@ -4,19 +4,19 @@ Adapted from: https://github.com/rsocket/rsocket-js/blob/master/packages/rsocket
 
 = Usage
 
-First run the ExampleCli compiled from rsocket-js examples with babel:
+First run the ExampleCli compiled from rsocket-js examples with babel (see section below)
 
 ....
 node build/SimpleCli.js --mode server --protocol ws
 ....
 
-Then start the client:
+Then start the typescript-based client:
 
 ....
 npm run start
 ....
 
-or
+or:
 
 ....
 npm run build
@@ -33,7 +33,7 @@ x@clr-ac6c3d18a1e44dd9af337de503fff7df~/Code/rsocket-typescript-example $ node l
  | |    \__ \ | (_) | | (__  |   <  |  __/ | |_  |_____| | |_  | |_| | | |_) | |  __/ \__ \ | (__  | |    | | | |_) | | |_
  |_|    |___/  \___/   \___| |_|\_\  \___|  \__|          \__|  \__, | | .__/   \___| |___/  \___| |_|    |_| | .__/   \__|
                                                                 |___/  |_|                                    |_|
-Client connecting to localhost:8181
+Client connecting to localhost:8080
 Connection status: { kind: 'CONNECTED' }
 Requesting stream with payload: undefined
 requestStream { data: 'Hi!', metadata: null }
@@ -46,8 +46,8 @@ exit
 Expected result on server side:
 
 ....
-node SimpleCli.js --mode server --protocol ws
-Server started on 0.0.0.0:8181
+node build/SimpleCli.js --mode server --protocol ws
+Server started on 0.0.0.0:8080
 Requesting stream with payload: Hi!
 Server got requestStream with payload: data: Hi!,
       metadata: null
@@ -56,9 +56,38 @@ onNext(world!)
 onComplete()
 ....
 
+= Building the rsocket-js examples
+
+The rsocket-js examples don't seem to provide a way to easily compile the
+modules. To compile the examples yourself you will need to perform the following steps.
+
+First install babel:
+....
+npm install -g babel-cli
+....
+
+Now clone the rsocket-js examples:
+
+....
+git clone git@github.com:rsocket/rsocket-js.git
+cd rsocket-js/packages/rsocket-examples/
+npm i
+npm i yargs --save
+echo '{"plugins": ["transform-flow-strip-types","transform-object-rest-spread"], "presets": ["es2015"]}' > .babelrc
+npm i babel-plugin-transform-flow-strip-types --save-dev
+npm i babel-preset-es2015 --save-dev
+npm i babel-plugin-transform-object-rest-spread --save-dev
+babel ./src --out-dir=./build
+....
+
+You can now run the example as follows:
+....
+node build/SimpleCli.js --mode server --protocol ws
+....
+
 = Todo
 
 - Make work as websocket server is implemented
-- A hack is required to the rsocket typings to work with the 'ws' module in node.
+- A hack is required to the rsocket typings to work with the 'ws' module in node (see notes at the top of src/index.ts)
 
 

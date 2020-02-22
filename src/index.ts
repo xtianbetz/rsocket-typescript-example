@@ -28,7 +28,7 @@ program
     .version('0.0.1')
     .description('An rsocket typescript example')
     .option('-h, --host <localhost>', "Host", "localhost")
-    .option('-p, --port <8181>', "Port", "8181")
+    .option('-p, --port <8080>', "Port", "8080")
     .parse(process.argv);
 
 var logRequest = console.log;
@@ -121,7 +121,7 @@ function connect() {
         },
         responder: new SymmetricResponder(),
         transport: new RSocketWebSocketClient({
-            url: "ws://localhost:8181",
+            url: "ws://localhost:8080",
             wsCreator: url => {
                 return new WsWebSocket(url);
             }
