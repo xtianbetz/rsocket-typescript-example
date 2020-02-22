@@ -22,12 +22,20 @@
   "homepage": "https://github.com/xtianbetz/typescript-pizza-cli#readme",
   "dependencies": {
     "@types/clear": "^0.1.0",
+    "@types/es6-promise": "^3.3.0",
     "@types/figlet": "^1.2.0",
+    "@types/rsocket-core": "0.0.4",
+    "@types/rsocket-websocket-client": "0.0.3",
+    "@types/rsocket-websocket-server": "0.0.2",
+    "@types/ws": "^7.2.1",
     "chalk": "^3.0.0",
     "clear": "^0.1.0",
     "commander": "^4.1.1",
     "figlet": "^1.2.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "rsocket-core": "0.0.19",
+    "rsocket-websocket-client": "0.0.19",
+    "rsocket-websocket-server": "0.0.19"
   },
   "devDependencies": {
     "@types/node": "^13.7.1",
