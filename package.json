@@ -1,25 +1,24 @@
 {
-  "name": "typescript-pizza-cli",
+  "name": "rsocket-typescript-example",
   "version": "1.0.0",
   "description": "typescript demo app",
-  "main": "./lib/index.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "create": "npm run build && npm run test",
     "build": "tsc -p .",
-    "test": "./bin/pizza",
+    "test": "node ./lib/index.js",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xtianbetz/typescript-pizza-cli.git"
+    "url": "git+https://github.com/xtianbetz/rsocket-typescript-example.git"
   },
   "author": "Christian Betz <christian.betz@gmail.com>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/xtianbetz/typescript-pizza-cli/issues"
+    "url": "https://github.com/xtianbetz/rsocket-typescript-example/issues"
   },
-  "homepage": "https://github.com/xtianbetz/typescript-pizza-cli#readme",
+  "homepage": "https://github.com/xtianbetz/rsocket-typescript-example#readme",
   "dependencies": {
     "@types/clear": "^0.1.0",
     "@types/es6-promise": "^3.3.0",
@@ -42,8 +41,5 @@
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
-  },
-  "bin": {
-    "pizza": "./lib/index.js"
   }
 }
