@@ -10,16 +10,29 @@ First run the ExampleCli compiled from rsocket-js examples with babel (see secti
 node build/SimpleCli.js --mode server --protocol ws
 ....
 
-Then start the typescript-based client:
+
+
+Install NPM modules:
 
 ....
-npm run start
+npm install
 ....
 
-or:
 
+IMPORTANT: After installing NPM modules you will need to edit
+node_modules/@types/node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
+(see
+https://github.com/xtianbetz/rsocket-typescript-example/blob/master/src/index.ts#L14
+for more details). This should/will be fixed on day.
+
+Then build the typescript-based client:
 ....
 npm run build
+....
+
+
+Finally run it:
+....
 node lib/index.js
 ....
 
