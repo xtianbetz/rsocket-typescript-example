@@ -10,20 +10,11 @@ First run the ExampleCli compiled from rsocket-js examples with babel (see secti
 node build/SimpleCli.js --mode server --protocol ws
 ....
 
-
-
 Install NPM modules:
 
 ....
 npm install
 ....
-
-
-IMPORTANT: After installing NPM modules you will need to edit
-node_modules/@types/node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
-(see
-https://github.com/xtianbetz/rsocket-typescript-example/blob/master/src/index.ts#L14
-for more details). This should/will be fixed when we figure out the correct approach.
 
 Then build the typescript-based client:
 ....
@@ -100,10 +91,4 @@ node build/SimpleCli.js --mode server --protocol ws
 
 = Todo
 
-- Make work as websocket server like the upstream (non-typescript) SimpleCli.js
-  does.
-- A hack is required to the rsocket typings to work with the 'ws' module in
-  node (see notes at the top of src/index.ts). Figure out the proper long-term
-  solution for this problem.
-
-
+- Make it work as websocket server like the upstream (non-typescript) SimpleCli.js does.
