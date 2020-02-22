@@ -10,7 +10,13 @@ import {RSocketClient, MAX_STREAM_ID} from 'rsocket-core';
 import {Responder, Payload, ReactiveSocket, ISubscription}  from 'rsocket-types';
 import {Flowable, Single}  from 'rsocket-flowable';
 import Deferred from 'fbjs/lib/Deferred'; // TODO: needs typings (we cannot use strict because of this)
-import WsWebSocket = require('ws'); // TODO: Requires hack to RsocketJS typings. This is because a WsWebSocket is not the same as standard WebSocket
+import WsWebSocket = require('ws');
+// Required the hack to RsocketJS typing...
+// * A (node ws) WebSocket is not the same as standard browser/WebSocket
+// * Modify this file: node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
+// * Add the "import WsWebSocket..." line as shown above
+// * replace instances of WebSocket with WsWebSocket
+// * See: https://github.com/websockets/ws/pull/1584
 
 console.log(
     chalk.red(
@@ -134,8 +140,6 @@ async function run(options) {
 
     return runOperation(socket, options);
 }
-
-//var w = new WebSocket("ws://localhost:8341");
 
 Promise.resolve(run(program)).then(
     () => {
