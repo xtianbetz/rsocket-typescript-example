@@ -12,13 +12,6 @@ import {Flowable, Single}  from 'rsocket-flowable';
 import Deferred from 'fbjs/lib/Deferred'; // TODO: needs typings (we cannot use strict because of this)
 import ws from "websocket";
 
-// Required the hack to RsocketJS typing...
-// * A (node ws) WebSocket is not the same as standard browser/WebSocket
-// * Modify this file: node_modules/@types/rsocket-websocket-client/RSocketWebSocketClient.d.ts
-// * Add the "import WsWebSocket..." line as shown above
-// * replace instances of WebSocket with WsWebSocket
-// * See: https://github.com/websockets/ws/pull/1584
-
 console.log(
     chalk.red(
         figlet.textSync('rsocket-typescript', { horizontalLayout: 'full' })
